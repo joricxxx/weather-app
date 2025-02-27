@@ -48,7 +48,7 @@ export default {
   data() {
     return {
       inputCity: '', // New data property for input value
-      city: 'Baybay', // Default city
+      city: 'Baybay',
       weatherData: null,
       status: 'Loading weather data...',
       weatherImage: '', // New data property for weather image
