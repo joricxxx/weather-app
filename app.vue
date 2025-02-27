@@ -1,6 +1,6 @@
 <template>
-  <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-slate-900 to-slate-700">
-    <div class="flex flex-col justify-center w-[375px] max-sm:w-[300px]  bg-gradient-to-r from-green-400 to-emerald-600 pb-14 pt-5">
+  <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-slate-900 to-slate-700 flex-col">
+    <div class="flex flex-col justify-center w-[375px] max-sm:w-[300px]  bg-gradient-to-r from-green-400 to-emerald-600 pb-14 pt-5  shadow-lg rounded-lg">
       <div class="card">
 
         <div class="search flex px-5">
@@ -39,6 +39,8 @@
           </div>
         </div>
     </div>
+
+    <p class="text-gray-500 mt-20 text-[12px]">Powered by OpenWeatherMap</p>
 
   </div>
 </template>
