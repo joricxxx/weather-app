@@ -1,8 +1,9 @@
 <template>
   <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-slate-900 to-slate-700">
-    <div class="flex flex-col items-center justify-center w-[375px] max-sm:w-[300px]  bg-gradient-to-r from-green-400 to-emerald-600 pb-14 pt-5 px-2">
+    <div class="flex flex-col justify-center w-[375px] max-sm:w-[300px]  bg-gradient-to-r from-green-400 to-emerald-600 pb-14 pt-5">
       <div class="card">
-        <div class="search flex">
+
+        <div class="search flex px-5">
           <Input v-model="inputCity" placeholder="Search Country, City, Province..." class="flex-grow bg-white"/>
           <Button class="ml-2 px-3" @click="updateCity">
             <fa :icon="['fas', 'search']" class="text-white"/>
@@ -15,29 +16,30 @@
             <div class="flex flex-col items-center gap-4">
               <p class="temperature text-[30px] font-semibold">{{ weatherData?.main?.temp }}°C</p>
               <h1 class="city text-[25px] -mt-5">{{ weatherData?.name || city }}</h1>
-
-              <div class="mt-10 flex items-center gap-10">
-                <div class="humidity flex gap-2">
-                  <img src="assets/img/humidity.png" class="w-7 h-7" alt="Humidity Icon">
-                  <div>
-                    <p class="font-semibold text-[18px]">{{ weatherData?.main?.humidity}}%</p>
-                    <p class="-mt-1">Humidity</p>
-                  </div>
-                </div>
-
-                <div class="wind flex gap-2">
-                  <img src="assets/img/wind.png" class="w-7 h-7" alt="Wind Icon">
-                  <div >
-                    <p class="font-semibold text-[18px]">{{ weatherData?.wind?.speed }} km/h</p>
-                    <p  class="-mt-1">Wind</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
+      
+      <div class="mt-16 flex justify-evenly text-white "> 
+          <div class="humidity gap-2 flex">
+            <img src="assets/img/humidity.png" class="w-7 h-7" alt="Humidity Icon">
+            <div>
+              <p class="font-semibold text-[20px]">{{ weatherData?.main?.humidity}}%</p>
+              <p class="-mt-1">Humidity</p>
+            </div>
+          </div>
+
+          <div class="wind gap-2 flex">
+            <img src="assets/img/wind.png" class="w-7 h-7" alt="Wind Icon">
+            <div >
+              <p class="font-semibold text-[20px]">{{ weatherData?.wind?.speed }} km/h</p>
+              <p  class="-mt-1">Wind</p>
+            </div>
+          </div>
+        </div>
     </div>
+
   </div>
 </template>
 
