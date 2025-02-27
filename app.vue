@@ -1,9 +1,9 @@
 <template>
   <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-slate-900 to-slate-700">
-    <div class="flex flex-col items-center justify-center w-[375px] max-sm:w-[300px] bg-gradient-to-r from-green-400 to-emerald-600 pb-14 pt-5 px-2 rounded-lg">
-      <div class="card rounded-lg">
+    <div class="flex flex-col items-center justify-center w-[375px] max-sm:w-[300px]  bg-gradient-to-r from-green-400 to-emerald-600 pb-14 pt-5 px-2">
+      <div class="card">
         <div class="search flex">
-          <Input v-model="inputCity" placeholder="Search Country, City, Province..." class="flex-grow bg-white text-black"/>
+          <Input v-model="inputCity" placeholder="Search Country, City, Province..." class="flex-grow bg-white"/>
           <Button class="ml-2 px-3" @click="updateCity">
             <fa :icon="['fas', 'search']" class="text-white"/>
           </Button>
@@ -48,46 +48,26 @@ export default {
   data() {
     return {
       inputCity: '', // New data property for input value
-      city: 'Philippines',
+      city: 'Baybay', // Default city
       weatherData: null,
       status: 'Loading weather data...',
       weatherImage: '', // New data property for weather image
     };
   },
   methods: {
-    async fetchWeatherDataByCity(city) {
+    async fetchWeatherData() {
       const apiKey = this.$config.public.apiKey; // Accessing the API key from the config
+      console.log('API key:', apiKey);
       this.status = 'Loading weather data...';
       try {
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
           params: {
-            q: city,
+            q: this.city,
             appid: apiKey, // Using the API key
             units: 'metric'
           }
         });
         this.weatherData = response.data;
-        this.status = null; // Clear loading status
-        this.updateWeatherImage(); // Update weather image based on fetched data
-      } catch (error) {
-        this.status = 'Error fetching weather data: ' + error.message;
-        console.error('Error:', error);
-      }
-    },
-    async fetchWeatherDataByCoords(lat, lon) {
-      const apiKey = this.$config.public.apiKey; // Accessing the API key from the config
-      this.status = 'Loading weather data...';
-      try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
-          params: {
-            lat: lat,
-            lon: lon,
-            appid: apiKey, // Using the API key
-            units: 'metric'
-          }
-        });
-        this.weatherData = response.data;
-        this.city = this.weatherData.name; // Update city with the fetched city name
         this.status = null; // Clear loading status
         this.updateWeatherImage(); // Update weather image based on fetched data
       } catch (error) {
@@ -97,7 +77,7 @@ export default {
     },
     updateCity() {
       this.city = this.inputCity; // Update city with input value
-      this.fetchWeatherDataByCity(this.city); // Fetch weather data for the new city
+      this.fetchWeatherData(); // Fetch weather data for the new city
     },
     updateWeatherImage() {
       if (this.weatherData && this.weatherData.weather && this.weatherData.weather.length > 0) {
@@ -106,28 +86,10 @@ export default {
       } else {
         this.weatherImage = '';
       }
-    },
-    getCurrentLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            this.fetchWeatherDataByCoords(lat, lon);
-          },
-          (error) => {
-            console.error('Error getting location:', error);
-            this.fetchWeatherDataByCity(this.city); // Fallback to default city if location access is denied
-          }
-        );
-      } else {
-        console.error('Geolocation is not supported by this browser.');
-        this.fetchWeatherDataByCity(this.city); // Fallback to default city if geolocation is not supported
-      }
     }
   },
   async mounted() {
-    this.getCurrentLocation();
+    this.fetchWeatherData();
   },
 };
 </script>
