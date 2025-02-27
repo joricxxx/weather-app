@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-slate-900 to-slate-700">
-    <div class="flex flex-col items-center justify-center w-[375px] max-sm:w-[300px]  bg-gradient-to-r from-green-400 to-emerald-600 py-14">
+    <div class="flex flex-col items-center justify-center w-[375px] max-sm:w-[300px]  bg-gradient-to-r from-green-400 to-emerald-600 pb-14 pt-5 px-2">
       <div class="card">
         <div class="search flex">
           <Input v-model="inputCity" placeholder="Search Country, City, Province..." class="flex-grow bg-white"/>
