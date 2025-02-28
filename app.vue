@@ -4,7 +4,7 @@
       <div class="card">
 
         <div class="search flex px-5">
-          <Input v-model="inputCity" placeholder="Search Country, City, Province..." class="flex-grow bg-white"/>
+          <Input v-model="inputCity" placeholder="Search Country, City, Province..." class="flex-grow bg-white" @keyup.enter="updateCity"/>
           <Button class="ml-2 px-3" @click="updateCity">
             <fa :icon="['fas', 'search']" class="text-white"/>
           </Button>
