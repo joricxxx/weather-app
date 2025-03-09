@@ -1,7 +1,7 @@
 <template>
   <Toaster />
   <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-slate-900 to-slate-700 flex-col">
-    <div class="flex flex-col justify-center w-[375px] max-sm:w-[300px] bg-gradient-to-r from-blue-400 to-indigo-800 pb-14 pt-5 shadow-lg rounded-lg">
+    <div class="flex flex-col justify-center w-[375px] max-sm:w-[300px] bg-gradient-to-r from-blue-400 to-indigo-800 pb-14 pt-5 mt-28 shadow-lg rounded-lg">
       <div class="card">
         <div class="search flex px-5">
           <Input v-model="inputCity" placeholder="Search Country, City, Province..." class="flex-grow bg-white" @keyup.enter="updateCity"/>
