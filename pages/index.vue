@@ -61,14 +61,6 @@ export default {
     async fetchWeatherData() {
       const apiKey = this.$config.public.apiKey; // Accessing the API key from the config
       console.log('API key:', apiKey);
-      toast({
-        title: 'Fetching data',
-        description: 'It may take some time...',
-        style: {
-          backgroundColor: '#3B82F6',
-          color: '#fff',
-        }
-      });
       try {
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
           params: {
@@ -138,6 +130,14 @@ export default {
       }
     },
     async updateCity() {
+      toast({
+        title: 'Fetching data',
+        description: 'It may take some time...',
+        style: {
+          backgroundColor: '#3B82F6',
+          color: '#fff',
+        }
+      });
       if (!this.inputCity) {
         toast({
           description: 'Please enter a valid city name.',
