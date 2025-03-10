@@ -60,7 +60,6 @@ export default {
   methods: {
     async fetchWeatherData() {
       const apiKey = this.$config.public.apiKey; // Accessing the API key from the config
-      console.log('API key:', apiKey);
       try {
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
           params: {
