@@ -27,4 +27,9 @@ export default defineNuxtConfig({
       apiKey: process.env.OWM_APIKEY,
     },
   },
+  app: {
+    head: {
+      title: "Nuxt Weather",
+    },
+  },
 });
