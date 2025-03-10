@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <p class="text-gray-500 mt-20 text-[12px]">Powered by OpenWeatherMap</p>
+    <p class="text-gray-500 mt-20 text-[12px]">Powered by OpenWeather</p>
   </div>
 </template>
 
